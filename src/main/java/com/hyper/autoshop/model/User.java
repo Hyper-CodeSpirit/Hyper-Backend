@@ -13,11 +13,11 @@ import java.util.Date;
 @Builder
 @Table(name = "users", schema = "hyper")
 @NoArgsConstructor
-@AllArgsConstructor // Specify schema explicitly
+@AllArgsConstructor
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // or another strategy
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or another strategy
     private Long id; // No auto-increment as per SQL table
 
     @Column(name = "user_name", nullable = false, length = 200)
@@ -28,6 +28,9 @@ public class User {
 
     @Column(columnDefinition = "TEXT")
     private String avatar;
+
+    @Column(name = "password", columnDefinition = "TEXT") // Optional password field
+    private String password;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdDate;

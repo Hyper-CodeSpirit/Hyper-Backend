@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Data
-public class UserRequest {
+public class GoogleAuthRequest {
 
     private String username;
     private String email;
