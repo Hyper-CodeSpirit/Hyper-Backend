@@ -89,7 +89,10 @@ public class AuthService {
         authResponse.setToken(token);
         authResponse.setHeader(SecurityConstants.JWT_HEADER);
         User existingUser = userRepo.findByEmail(emailLoginRequest.getEmail());
-        if (existingUser != null && existingUser.getEmail().equals(emailLoginRequest.getEmail())) {
+
+        System.out.println(existingUser.getPassword());
+        System.out.println(emailLoginRequest.getPassword());
+        if (existingUser.getEmail().equals(emailLoginRequest.getEmail())) {
             if(existingUser.getAuthenticationMethod().equals("google")) {
                 authResponse.setMessage("Email already in google authentication");
             }else if(existingUser.getAuthenticationMethod().equals("email")) {
@@ -98,8 +101,12 @@ public class AuthService {
                 }else {
                     authResponse.setMessage("Invalid email or password");
                 }
+            }else {
+                authResponse.setMessage("Invalid Request");
             }
-            return authResponse;
+        }
+        else {
+            authResponse.setMessage("User does not exist");
         }
         return authResponse;
     }
