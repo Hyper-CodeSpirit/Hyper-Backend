@@ -34,10 +34,9 @@ public class AuthService {
         if (existingUser != null && existingUser.getEmail().equals(googleAuthRequest.getEmail())) {
 
             if(existingUser.getAuthenticationMethod().equals("email")) {
-                authResponse.setMessage("Email already in google authentication");
-            }else {
-                authResponse.setMessage("Email already in use");
+                authResponse.setMessage("Success");
             }
+            authResponse.setMessage("Success");
             return authResponse;
         }
         User user = User.builder().build();
