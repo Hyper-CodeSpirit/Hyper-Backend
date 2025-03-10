@@ -30,4 +30,9 @@ public class AuthController {
         return authService.emailLogin(user);
     }
 
+    @GetMapping("/info")
+    public String info(){
+        return "Server loaded";
+    }
+
 }
